@@ -21,5 +21,4 @@ const ActorsGrid = ({actors}) => {
     </div>
     );
 };
-
 export default ActorsGrid;
