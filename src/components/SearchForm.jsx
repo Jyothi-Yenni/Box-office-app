@@ -1,8 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const SearchForm = ({onSearch}) => {
     const [searchStr, setSearchStr] = useState('');
     const [searchOption, setSearchOption] = useState('shows');
+
+
+//1.MOUNTS
+//2. RERENDER
+//2.5 logic before next rerender
+//3.UNMOUNT
+// useeffect runs atleast once
+console.log('COMPONENT RERENDER');
+
+    useEffect(() => {
+
+      console.log('SEARCH OPTION CHANGES', searchOption);
+      return() => {
+        console.log('BEFORE NEXT USEEFFECT RUN', searchOption);
+      };
+    }, [searchOption]);
 
 
     const onSearchInputChange = ev => {
