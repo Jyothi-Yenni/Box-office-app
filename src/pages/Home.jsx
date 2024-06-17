@@ -4,8 +4,10 @@ import { searchForShows, searchForPeople } from './../api/tvmaze';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
+
 const Home = () => {
   const [filter, setFilter] = useState(null);
+
 
   const { data: apiData, error: apiDataError} = useQuery({
     queryKey: ['search', filter],
@@ -21,25 +23,7 @@ const Home = () => {
   const onSearch = async ({q, searchOption}) => {
     setFilter({ q, searchOption })
   };
-// const [apiData, setApiData] = useState(null);
-// const [apiDataError, setApiDataError] = useState(null);
-// console.log(searchOption);
-//console.log(apiDataError);
 
-  //   try {
-  //     setApiDataError(null);
-  //    let result;
-  //     if(searchOption === 'shows'){
-  //        result = await searchForShows(q);
-  //     setApiData(result); 
-  //     } else{
-  //        result = await searchForPeople(q);
-  //       setApiData(result);
-  //     }
-  //   } catch (error) {
-  //     setApiDataError(error);
-  //   }
-  //   //console.log(apiData);
   const renderApiData = () => {
     if (apiDataError) {
       return <div>Error occured: {apiDataError.message}</div>;
@@ -59,17 +43,10 @@ const Home = () => {
     }
 
     return null;
-
-    // { apiData.map((
-    //     data => <div key={data.show.id}> {data.show.name} </div>
-    //     ))}
   };
   return (
     <div>
-      {
         <SearchForm onSearch={onSearch} />
-    }
-
       <div>{renderApiData()}</div>
     </div>
   );
