@@ -6,14 +6,15 @@ const apiGet = async queryString => {
 
   return body;
 };
-//https://api.tvmaze.com/search/shows?q=boys
 
 export const searchForShows = query => apiGet(`/search/shows?q=${query}`);
+
 export const searchForPeople = query => apiGet(`/search/people?q=${query}`);
-export const getShowById = showId => 
+
+export const getShowById = showId =>
   apiGet(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
 
-export const getShowByIds =  async showIds => {
+export const getShowsByIds = async showIds => {
   const promises = showIds.map(showId => apiGet(`/shows/${showId}`));
 
   return Promise.all(promises);

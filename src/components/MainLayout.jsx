@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import Navs from './Navs';
 import AppTitle from './AppTitle';
+import Navs from './Navs';
+
 const MainLayout = () => {
   return (
     <div>
       <AppTitle />
       <Navs />
+
       <Outlet />
     </div>
   );
